@@ -1,0 +1,7 @@
+{
+	"neoconf": {
+		"import": {
+			"vscode": true
+		}
+	}
+}
