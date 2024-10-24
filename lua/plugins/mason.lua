@@ -12,13 +12,10 @@ return {
         "lua_ls",
         "gopls",
         "rust_analyzer",
-        "jdtls",
         "pyright",
         "csharp_ls",
-        "ocamllsp",
         "eslint",
         "ts_ls",
-        "zls",
         "fsautocomplete",
         -- add more arguments for adding more language servers
       })
@@ -33,7 +30,6 @@ return {
       opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
         "prettier",
         "stylua",
-        -- "eslint_d",
         -- add more arguments for adding more null-ls sources
       })
     end,
