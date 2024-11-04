@@ -189,33 +189,33 @@ return {
       vim.bo.softtabstop = 4
       -- -- this would disable semanticTokensProvider for all clients
       -- -- client.server_capabilities.semanticTokensProvider = nil
-      -- if client.name == "tsserver" or client.name == "ts_ls" then
-      --   -- Check if organize imports is already attached
-      --   if vim.b[bufnr].organize_imports_attached then return end
-      --   -- Move the organize imports function here
-      --   local function organizeImports()
-      --     local params = {
-      --       command = "_typescript.organizeImports",
-      --       arguments = { vim.api.nvim_buf_get_name(bufnr) },
-      --       title = "Organize Imports",
-      --     }
-      --
-      --     client.request_sync("workspace/executeCommand", params, 1000, bufnr)
-      --   end
-      --
-      --   -- Run organize imports before other formatters
-      --   vim.api.nvim_create_autocmd("BufWritePre", {
-      --     buffer = bufnr,
-      --     callback = function()
-      --       organizeImports()
-      --       vim.lsp.buf.format {
-      --         bufnr = bufnr,
-      --         filter = function(c) return c.name == "null-ls" end,
-      --       }
-      --     end,
-      --   })
-      --   vim.b[bufnr].organize_imports_attached = true
-      -- end
+      if client.name == "tsserver" or client.name == "ts_ls" then
+        -- Check if organize imports is already attached
+        if vim.b[bufnr].organize_imports_attached then return end
+        -- Move the organize imports function here
+        local function organizeImports()
+          local params = {
+            command = "_typescript.organizeImports",
+            arguments = { vim.api.nvim_buf_get_name(bufnr) },
+            title = "Organize Imports",
+          }
+
+          client.request_sync("workspace/executeCommand", params, 1000, bufnr)
+        end
+
+        -- Run organize imports before other formatters
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          buffer = bufnr,
+          callback = function()
+            organizeImports()
+            vim.lsp.buf.format {
+              bufnr = bufnr,
+              filter = function(c) return c.name == "null-ls" end,
+            }
+          end,
+        })
+        vim.b[bufnr].organize_imports_attached = true
+      end
     end,
   },
 }
