@@ -150,44 +150,44 @@ return {
   -- },
   -- NOTE: This is apparently a UI for DB management but I couldn't get it to work
   -- I'll return to it later
-  -- {
-  --   "kndndrj/nvim-dbee",
-  --   dependencies = {
-  --     "MunifTanjim/nui.nvim",
-  --   },
-  --   build = function()
-  --     -- Install tries to automatically detect the install method.
-  --     -- if it fails, try calling it with one of these parameters:
-  --     --    "curl", "wget", "bitsadmin", "go"
-  --     require("dbee").install()
-  --   end,
-  --   config = function()
-  --     require("dbee").setup(--[[optional config]])
-  --   end,
-  -- },
-  "tpope/vim-dadbod",
-  "kristijanhusak/vim-dadbod-ui",
   {
-    "hrsh7th/nvim-cmp",
+    "kndndrj/nvim-dbee",
     dependencies = {
-      "kristijanhusak/vim-dadbod-completion",
+      "MunifTanjim/nui.nvim",
     },
-    -- override the options table that is used in the `require("cmp").setup()` call
-    opts = function(_, opts)
-      -- opts parameter is the default options table
-      -- the function is lazy loaded so cmp is able to be required
-      local cmp = require "cmp"
-      -- modify the sources part of the options table
-      opts.sources = cmp.config.sources {
-        { name = "nvim_lsp", priority = 1000 },
-        { name = "luasnip", priority = 750 },
-        { name = "buffer", priority = 500 },
-        { name = "path", priority = 250 },
-        { name = "vim-dadbod-completion", priority = 700 }, -- add new source
-      }
-      -- return the new table to be used
-      return opts
+    build = function()
+      -- Install tries to automatically detect the install method.
+      -- if it fails, try calling it with one of these parameters:
+      --    "curl", "wget", "bitsadmin", "go"
+      require("dbee").install()
+    end,
+    config = function()
+      require("dbee").setup(--[[optional config]])
     end,
   },
+  -- "tpope/vim-dadbod",
+  -- "kristijanhusak/vim-dadbod-ui",
+  -- {
+  --   "hrsh7th/nvim-cmp",
+  --   dependencies = {
+  --     "kristijanhusak/vim-dadbod-completion",
+  --   },
+  --   -- override the options table that is used in the `require("cmp").setup()` call
+  --   opts = function(_, opts)
+  --     -- opts parameter is the default options table
+  --     -- the function is lazy loaded so cmp is able to be required
+  --     local cmp = require "cmp"
+  --     -- modify the sources part of the options table
+  --     opts.sources = cmp.config.sources {
+  --       { name = "nvim_lsp", priority = 1000 },
+  --       { name = "luasnip", priority = 750 },
+  --       { name = "buffer", priority = 500 },
+  --       { name = "path", priority = 250 },
+  --       { name = "vim-dadbod-completion", priority = 700 }, -- add new source
+  --     }
+  --     -- return the new table to be used
+  --     return opts
+  --   end,
+  -- },
   "ntpeters/vim-better-whitespace",
 }
