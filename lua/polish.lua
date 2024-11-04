@@ -44,6 +44,7 @@ end
 
 -- NOTE: This is an attempt to force everything to use tabs instead of spaces
 -- It mostly works, sometimes it doesn't
+vim.opt.scrolloff = 12
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt_global.expandtab = false
