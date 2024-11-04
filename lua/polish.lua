@@ -21,10 +21,11 @@ local is_vscode = pcall(require, "vscode")
 -- NOTE: This sets up the Everforest colorscheme and some Copilot keybindings
 if not is_vscode then
   vim.g.everforest_background = "hard"
-  vim.keymap.set("i", "<C-J>", 'copilot#Accept("\\<CR>")', {
-    expr = true,
-    replace_keycodes = false,
-  })
+
+  -- vim.keymap.set("i", "<C-J>", function() require("avante").get_suggestion():accept() end, {
+  --   expr = true,
+  --   replace_keycodes = false,
+  -- })
   vim.g.copilot_no_tab_map = true
 else
   require("lazy").setup {
