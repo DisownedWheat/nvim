@@ -8,7 +8,6 @@ return {
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.colorscheme.everforest" },
   { import = "astrocommunity.colorscheme.tokyonight-nvim" },
-  { import = "astrocommunity.pack.java" },
   { import = "astrocommunity.colorscheme.onedarkpro-nvim" },
   -- import/override with your plugins folder
 }
