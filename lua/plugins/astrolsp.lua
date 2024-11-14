@@ -187,6 +187,16 @@ return {
       vim.bo.shiftwidth = 4
       vim.bo.tabstop = 4
       vim.bo.softtabstop = 4
+
+      -- NOTE: This is to prevent all the rust-analyzer error spam. Can hopefully be removed at some point
+      for _, method in ipairs { "textDocument/diagnostic", "workspace/diagnostic" } do
+        local default_diagnostic_handler = vim.lsp.handlers[method]
+        vim.lsp.handlers[method] = function(err, result, context, config)
+          if err ~= nil and err.code == -32802 then return end
+          return default_diagnostic_handler(err, result, context, config)
+        end
+      end
+
       -- -- this would disable semanticTokensProvider for all clients
       -- -- client.server_capabilities.semanticTokensProvider = nil
       if client.name == "tsserver" or client.name == "ts_ls" then
