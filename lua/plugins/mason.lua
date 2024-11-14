@@ -14,7 +14,6 @@ return {
         "rust_analyzer",
         "pyright",
         "csharp_ls",
-        "eslint",
         "ts_ls",
         "fsautocomplete",
         -- add more arguments for adding more language servers
@@ -28,8 +27,6 @@ return {
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
-        "prettier",
-        "stylua",
         -- add more arguments for adding more null-ls sources
       })
     end,

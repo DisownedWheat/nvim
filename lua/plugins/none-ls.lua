@@ -20,7 +20,12 @@ return {
       null_ls.builtins.formatting.csharpier,
       null_ls.builtins.formatting.gofmt,
       null_ls.builtins.formatting.goimports,
-      -- require "none-ls.diagnostics.eslint_d",
+      require("none-ls.diagnostics.eslint_d").with {
+        cmd = "npx eslint_d",
+        run_on_save = true,
+        method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
+        format = false,
+      },
     }
     config.debug = true
     return config -- return final config table
