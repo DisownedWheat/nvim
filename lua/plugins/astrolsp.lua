@@ -99,30 +99,6 @@ return {
           vim.b[bufnr].organize_imports_attached = true
         end,
       },
-      -- NOTE: This was an attempt to get eslint_d working smoothly and it did not succeed
-      -- This was also before I knew about Neoconf
-      -- I'm leaving it here for reference.
-
-      -- eslint_d = {
-      --   filetypes = {
-      --     "javascript",
-      --     "javascriptreact",
-      --     "javascript.jsx",
-      --     "typescript",
-      --     "typescriptreact",
-      --     "typescript.tsx",
-      --   },
-      --   root_dir = require("lspconfig.util").root_pattern(
-      --     ".eslintrc.js",
-      --     "base.eslintrc",
-      --     ".eslintrc.json",
-      --     ".eslintrc.yml",
-      --     ".eslintrc.yaml",
-      --     ".eslintrc",
-      --     ".git",
-      --     "/home/roblarnach/Documents/TriOnline/typescript/config/base.eslintrc"
-      --   ),
-      -- },
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
     },
     -- customize how language servers are attached
